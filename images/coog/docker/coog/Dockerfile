@@ -21,8 +21,10 @@ RUN apk add --no-cache \
     && pip3 install \
         "Genshi" \
         "kombu==4.6.3" \
+        "vine==1.3.0" \
         "celery==4.3.0" \
         "dateutils" \
+        "ebcdic" \
         "fastjsonschema==2.13" \
         "filelock" \
         "intervaltree" \
