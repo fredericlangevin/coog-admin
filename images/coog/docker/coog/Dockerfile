@@ -42,7 +42,7 @@ RUN apk add --no-cache \
         "pyparsing" \
         "PyPDF2" \
         "python-magic" \
-        "python-sql" \
+        "python-sql==1.1.0" \
         "python-stdnum" \
         "raven" \
         "redis>=3" \
