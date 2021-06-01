@@ -16,6 +16,7 @@ COOG_IO=$COOG_ROOT/io
 
 _init_env() {
     export PYTHONUNBUFFERED=1
+    export PYTHONOPTIMIZE=1
     export PYTHONPATH="$COOG_LIB:$COOG_TRYTOND:$PYTHONPATH"
     [ -d "$COOG_PROTEUS" ] && export PYTHONPATH="$COOG_PROTEUS:$PYTHONPATH"
     [ -z "$LOG_LEVEL" ] && LOG_LEVEL=ERROR
@@ -116,7 +117,7 @@ _celery() {
         q+=",api_offloading"
     fi
     celery worker \
-        --app=coog_async.broker_celery \
+        --app=coog_async.coog_celery \
         --loglevel="$LOG_LEVEL" \
         --concurrency="$n" \
         --queues="$q"

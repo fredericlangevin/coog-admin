@@ -25,7 +25,7 @@ RUN apk add --no-cache \
         "celery==4.3.0" \
         "dateutils" \
         "ebcdic" \
-        "fastjsonschema==2.13" \
+        "fastjsonschema" \
         "filelock" \
         "intervaltree" \
         "ipaddress" \
@@ -34,7 +34,7 @@ RUN apk add --no-cache \
         "msgpack-python" \
         "num2words" \
         "passlib" \
-        "phonenumbers" \
+        "phonenumbers==8.12.12" \
         "polib" \
         "pydot" \
         "pyflakes" \
@@ -54,8 +54,10 @@ RUN apk add --no-cache \
         "werkzeug==0.14.1" \
         "wrapt" \
         "requests-mock" \
-        "validate_email" \
+        "validate_email==1.3" \
         "zeep" \
+        "html2text" \
+        "uwsgidecorators"\
     && rm -rf /root/.cache \
     && find / -name "__pycache__" -prune -exec rm -rf {} \;
 
@@ -78,6 +80,7 @@ RUN chmod -R 771 /workspace
 USER coog
 
 ENV PATH="/workspace/bin:${PATH}"
+ENV PYTHONPATH=${PYTHONPATH}:/workspace/coog/bin/lib:/workspace/proteus:/workspace/trytond:/workspace/coog/bin
 
 ENTRYPOINT ["ep"]
 EXPOSE 8000
